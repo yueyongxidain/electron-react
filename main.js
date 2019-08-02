@@ -10,12 +10,12 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            nodeIntegration: true,
+            nodeIntegration: false,
             preload: path.join(__dirname, 'public/preload.js')
         }
     })
     // and load the index.html of the app.
-    mainWindow.loadURL(process.env.NODE_ENV == 'development' ? 'http://localhost:3000/#/app1' : url.format({
+    mainWindow.loadURL(process.env.NODE_ENV == 'development' ? 'http://localhost:3000/' : url.format({
         pathname: path.join(__dirname, './build/index.html'),
         protocol: 'file:',
         slashes: true

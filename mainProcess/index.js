@@ -9,8 +9,13 @@ const path = require('path')
 ipcMain.on('create-window', (event, arg) => {
     let win = new BrowserWindow({
         width: 800,
-        height: 600
+        height: 600,
+        webPreferences: {
+            nodeIntegration: false,
+            preload: path.join(__dirname, '../public/preload.js')
+        }
     });
+    win.webContents.openDevTools()
     win.on('close', function () {
         win = null;
     });
